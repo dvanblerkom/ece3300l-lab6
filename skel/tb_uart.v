@@ -10,6 +10,8 @@ module tb_uart;
    wire	       tx_ready1;
    wire	       UART_RX, UART_TX;
    wire	       rx_dv1;
+   wire [6:0] inv_leds;
+   wire [7:0] enb_leds;
    reg [7:0]   testdata;
    wire [1:0]  state_out;
  
@@ -33,9 +35,13 @@ module tb_uart;
         .o_Rx_DV(rx_dv1)
     );
 
+   sim_8x7seg tb_u1(.clk (clk), .inv_leds(inv_leds), .enb_leds(enb_leds));
+
    uart_loopback dut0 (
 		       // Outputs
 		       .UART_TX		(UART_TX),
+		       .inv_leds	(inv_leds[6:0]),
+		       .enb_leds	(enb_leds[7:0]),
 		       .state_out	(state_out[1:0]),
 		       // Inputs
 		       .clk		(clk),
