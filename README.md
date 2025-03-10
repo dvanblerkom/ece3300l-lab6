@@ -1,4 +1,4 @@
-# ece3300l-lab5
+# ece3300l-lab6
 
 ECE3300L Lab 6
 
